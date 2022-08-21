@@ -12,12 +12,24 @@ public class LongChipCompetition {
      * your search.
      */
     private ArrayList<Beatle> theBeatles = new ArrayList<Beatle>();
-
+	static double longestChip = 0;
     public static void main(String[] args) {
         LongChipCompetition lcc = new LongChipCompetition();
-
+        lcc.initializeBeatles();
+        System.out.println(lcc.findLongestChip() + " had the longest chip of " + longestChip );
     }
-
+    private String findLongestChip() {
+    	String longestChipBeatle = null;
+    	for(Beatle beatle : theBeatles) {
+         	for(Chip chip : beatle.getChips()) {
+         		if(chip.getLength() > longestChip) {
+         			longestChip = chip.getLength();
+         			longestChipBeatle = beatle.getName();
+         		}
+         	}
+         }
+    	return longestChipBeatle;
+    }
     private void initializeBeatles() {
         Beatle george = new Beatle("George");
         Beatle john = new Beatle("John");
