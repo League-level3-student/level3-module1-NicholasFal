@@ -40,9 +40,9 @@ public class RetroSun extends PApplet {
 		// 2. Set bgColor as the background color
 		background(bgColor);
 		recs.add(new Rectangle(x, y, w, h));
-		recs.add(new Rectangle(x, y - 10, w, h));
-		recs.add(new Rectangle(x, y - 20, w, h));
-		recs.add(new Rectangle(x, y - 30, w, h));
+		recs.add(new Rectangle(x, y - 25, w, h));
+		recs.add(new Rectangle(x, y - 50, w, h));
+		recs.add(new Rectangle(x, y - 75, w, h));
 	}
 
 	
@@ -88,6 +88,7 @@ public class RetroSun extends PApplet {
 				// Use the map() function to do that:
 				int y = i / width;
 				float step = map(y, 150, 450, 0, 1);
+				//float rectHeight = map(y, MiddleOfSun, BottomOfSun, 3, 20)   
 
 				// Call interpolateColor(sunColors, step) and save the color
 				// variable that's returned
@@ -130,14 +131,16 @@ public class RetroSun extends PApplet {
 		// If there isn't a variable, declare a float variable OUTSIDE of the
 		// draw function AND initialize it in the setup() function.
 		for(Rectangle rec : recs) {
-		rec.draw();
-			if(rec.y > 235) {
+			
+			rec.draw();
+			if(rec.y > 255) {
 		 rec.y--;
-		 rec.h-=0.25;
+		 //rec.h-=0.125;
 		 } else {
 			 rec.y = WIDTH / 2;
-			 rec.h = 40;
+		//	 rec.h = 20;
 		 }
+			rec.h = map(rec.y, 255, 450, 3, 20);
 		}
 		// Do you see the rectangle moving upwards?
 
