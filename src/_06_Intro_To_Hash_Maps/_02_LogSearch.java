@@ -87,6 +87,14 @@ public class _02_LogSearch implements ActionListener {
 				for(Integer i : user.keySet()) {
 					JOptionPane.showMessageDialog(null, "ID: " + i + "   Name: " + user.get(i));
 				}
+			} else if(arg0.getSource() == remove) {
+				String removeID = JOptionPane.showInputDialog("Enter an ID:");
+				if(user.containsKey(Integer.parseInt(removeID))) {
+				user.remove(Integer.parseInt(removeID));
+				JOptionPane.showMessageDialog(null, "ID " + removeID + " has been successfully removed!");
+				} else {
+					JOptionPane.showMessageDialog(null, "This ID cannot be found in the list.");
+				}
 			}
 		}
 	}

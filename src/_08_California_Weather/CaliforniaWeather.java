@@ -1,6 +1,13 @@
 package _08_California_Weather;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /*
  * OBJECTIVE:
@@ -27,10 +34,28 @@ import java.util.HashMap;
  * temperature, you can get a free API key at: https://openweathermap.org/api
  */
 
-public class CaliforniaWeather {
-    
+	
+public class CaliforniaWeather implements ActionListener {
+    JFrame frame = new JFrame();
+    JPanel panel = new JPanel();
+    JButton findTemp = new JButton();
+    JButton weatherToCities = new JButton();
+    JButton tempToCities = new JButton();
     void start() {
-        HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();
+    	frame.add(panel);
+    	panel.add(findTemp);
+    	panel.add(weatherToCities);
+    	panel.add(tempToCities);
+    	findTemp.setText("Find Weather of a City");
+    	findTemp.addActionListener(this);
+    	weatherToCities.setText("Find City from Weather");
+    	weatherToCities.addActionListener(this);
+    	tempToCities.setText("Find City from Temperature");
+    	tempToCities.addActionListener(this);
+    	frame.setVisible(true);
+    	frame.pack();
+    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();
         
         // All city keys have the first letter capitalized of each word
         String cityName = Utilities.capitalizeWords( "National City" );
@@ -42,4 +67,16 @@ public class CaliforniaWeather {
             System.out.println(cityName + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
         }
     }
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		if(arg0.getSource() == findTemp) {
+			String city = JOptionPane.showInputDialog("Enter a city:");
+			
+		} else if(arg0.getSource() == weatherToCities) {
+			
+		} else if(arg0.getSource() == tempToCities) {
+			
+		}
+	}
 }
