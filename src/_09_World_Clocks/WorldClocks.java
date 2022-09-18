@@ -3,9 +3,11 @@ package _09_World_Clocks;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -38,11 +40,11 @@ public class WorldClocks implements ActionListener {
     ClockUtilities clockUtil;
     Timer timer;
     TimeZone timeZone;
-
+    HashMap<String, TimeZone> cities = new HashMap<String, TimeZone>();
     JFrame frame;
     JPanel panel;
     JTextArea textArea;
-    
+    JButton addCity;
     String city;
     String dateStr;
     String timeStr;
@@ -64,12 +66,16 @@ public class WorldClocks implements ActionListener {
         // Sample starter program
         frame = new JFrame();
         panel = new JPanel();
+        addCity = new JButton();
+        addCity.setText("Add City");
+        addCity.addActionListener(this);
         textArea = new JTextArea();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setSize(100, 100);
         frame.add(panel);
         panel.add(textArea);
+        panel.add(addCity);
         textArea.setText(city + "\n" + dateStr);
         
         // This Timer object is set to call the actionPerformed() method every
