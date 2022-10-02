@@ -18,6 +18,7 @@ import javax.swing.Timer;
 /*
  * You task is to create a java program that:
  * 1. Displays the time for multiple cities around the world on one display.
+ * 
  * 2. Gives the user the ability to add a city to the display. One possible
  *    way to do this is to create a HashMap of city names and their
  *    corresponding time zones, e.g. HashMap<String, TimeZone>, then use each
